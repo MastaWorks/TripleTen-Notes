@@ -12,22 +12,31 @@ const confirmationModal = document.querySelector("#confirmation-modal");
 const confirmationCloseBtn = confirmationModal.querySelector(".modal__close-btn");
 const confirmationTextEl = confirmationModal.querySelector(".modal__text");
 
+function openModal(modal){
+  modal.classList.add("modal_is-opened");
+}
+
+function closeModal(modal)
+{
+  modal.classList.remove("modal_is-opened)");
+}
+
 confirmationCloseBtn.addEventListener("click", function () {
-  confirmationModal.classList.remove("modal_is-opened");
+  closeModal(confirmationModal);
 });
 
 reservationButton.addEventListener("click", function () {
-  reservationModal.classList.add("modal_is-opened");
+  openModal(reservationModal)
 });
 
 reservationCloseBtn.addEventListener("click", function () {
-  reservationModal.classList.remove("modal_is-opened");
+  closeModal(reservationModal);
 });
 
 reservationForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
-  confirmationModal.classList.add("modal_is-opened");
-  reservationModal.classList.remove("modal_is-opened");
+  openModal(confirmationModal);
+  closeModal(reservationModal);
 
   const inputValues = {
     name: reservationNameInput.value,
